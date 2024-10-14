@@ -6,15 +6,19 @@ export default class ContactCreationForAccount extends LightningElement {
     @track selectedAccountId;
     selectedOption;
 
-    @wire(getAccounts)
-    wiredAccounts({ error, data }) {
-        if (data) {
-            this.accountOptions = data.map(account => ({
-                label: account.Name,
-                value: account.Id
-            }));
-        } else if (error) {
-            console.error('Error fetching accounts', error);
+    connectedCallback() {
+        console.log('connected callback');
+        this.loadAccounts();
+    }
+
+    async loadAccounts() {
+        try {
+            const accounts = await getAccounts();
+            this.accountOptions = accounts.map(account => {
+                return { label: account.Name, value: account.Id };
+            });
+        } catch (error) {
+            console.error('Error fetching accounts:', error);
         }
     }
 
