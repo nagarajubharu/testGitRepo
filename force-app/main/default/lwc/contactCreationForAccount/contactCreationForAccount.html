@@ -1,0 +1,47 @@
+<template>
+ <lightning-combobox
+            name="progress"
+            label="Select Account"
+            value={selectedAccountId}
+            placeholder="Select Progress"
+            options={accountOptions}
+            onchange={handleChange} >
+ </lightning-combobox>
+<p>Selected Account : {selectedOption}</p>
+
+
+<lightning-input 
+name="lastName" 
+label="Last Name" 
+value={lastName} 
+onchange={handleInputChange}>
+</lightning-input>
+
+<lightning-input 
+name="title" 
+label="Title" 
+value={title} 
+onchange={handleInputChange}>
+</lightning-input>
+
+<lightning-input 
+name="email" 
+label="Email" 
+type="email" 
+value={email} 
+onchange={handleInputChange}>
+</lightning-input>
+
+<lightning-input 
+name="phone" 
+label="Phone Number" 
+type="phone" 
+value={phone} 
+onchange={handleInputChange}>
+</lightning-input>
+
+<lightning-button 
+label="Save" 
+onclick={handleSave}>
+</lightning-button>
+</template>
